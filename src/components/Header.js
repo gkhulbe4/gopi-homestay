@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
 import Image from "next/image";
+import logo from "../../public/images/logo.png";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,8 +38,8 @@ function Header() {
       }`}
     >
       <div className="flex items-center justify-between py-5 px-4 md:px-20">
-        <div className="w-max h-max flex justify-center items-center">
-          <Image src="/images/logo.png" alt="logo" height={120} width={120} />
+        <div className="w-34 flex justify-center items-center">
+          <img src={logo.src} alt="logo" className="w-full h-full" />
         </div>
 
         <nav
@@ -85,12 +86,6 @@ function Header() {
             </SheetTrigger>
             <SheetContent side="right" className="p-6 bg-gray-50">
               <nav className="flex flex-col gap-2 text-black">
-                <button
-                  className="font-semibold bg-white px-4 py-2 rounded-md border border-gray-300"
-                  onClick={() => scrollToSection("home")}
-                >
-                  Home
-                </button>
                 <button
                   className="font-semibold bg-white px-4 py-2 rounded-md border border-gray-300"
                   onClick={() => scrollToSection("rooms")}

@@ -35,6 +35,12 @@ export default function Home() {
             }),
           }}
         />
+        <link
+          rel="preload"
+          as="video"
+          href="/videos/HeroVideo.mp4"
+          type="video/mp4"
+        />
       </Head>
       <Hero />
       <Rooms />

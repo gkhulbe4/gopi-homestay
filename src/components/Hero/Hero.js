@@ -12,6 +12,8 @@ function Hero() {
         muted
         loop
         playsInline
+        preload="auto"
+        poster="/videos/HeroVideoPoster.jpeg"
         className="absolute top-0 left-0 w-full h-full object-cover z-[-1]"
       >
         <source src="/videos/HeroVideo.mp4" type="video/mp4" />
