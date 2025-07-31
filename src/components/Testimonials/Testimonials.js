@@ -3,7 +3,7 @@ import TestimonialsCarousel from "./TestimonialsCarousel";
 
 function Testimonials() {
   return (
-    <section className="bg-gray-50 py-20 px-4 w-full">
+    <section id="reviews" className="bg-gray-50 py-20 px-4 w-full">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl sm:text-5xl font-extrabold text-gray-900 mb-4">
           What Our Guests Say

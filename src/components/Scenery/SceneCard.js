@@ -2,9 +2,9 @@ import React from "react";
 
 function SceneCard({ img }) {
   return (
-    <a href="#" className="group relative block bg-black">
+    <a className="group relative block bg-black">
       <img
-        alt="img"
+        alt="Spacious double bed room with mountain view at Gopi Homestay"
         src={img}
         className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
       />
