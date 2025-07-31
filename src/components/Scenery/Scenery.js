@@ -36,8 +36,8 @@ function Scenery() {
         <TabsContent value="Mornings" className="mt-4">
           <SceneryTab
             imgs={[
-              "https://www.nomadicweekends.com/wp-content/uploads/2024/09/Jhandi-Homestay-Hill-Top-Luxurious-19-1228x800.jpeg",
-              "https://assets.cntraveller.in/photos/63a53dc3d7caa4e531854e77/master/pass/ROOM%20WITH%20A%20VIEW%20LEAD.jpg",
+              "/images/gallery/mornings/mountain2.jpeg",
+              "/images/gallery/mornings/mountain1.jpeg",
               "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
               "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
             ]}
