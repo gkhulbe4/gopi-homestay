@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { Menu } from "lucide-react";
 import { Sheet, SheetTrigger, SheetContent } from "@/components/ui/sheet";
-import logo from "../assets/logo.png";
+import Image from "next/image";
 
 function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -37,8 +37,8 @@ function Header() {
       }`}
     >
       <div className="flex items-center justify-between py-5 px-4 md:px-20">
-        <div className="w-34">
-          <img src={logo.src} alt="logo" className="w-full h-full" />
+        <div className="w-max h-max flex justify-center items-center">
+          <Image src="/images/logo.png" alt="logo" height={120} width={120} />
         </div>
 
         <nav

@@ -1,14 +1,14 @@
 import React from "react";
 import { Facebook, Instagram } from "lucide-react";
-import logo from "../assets/logo.png";
+import Image from "next/image";
 
 function Footer() {
   return (
     <footer className="bg-white dark:bg-gray-900">
       <div className="mx-auto max-w-5xl px-4 pt-16 sm:px-6 lg:px-8">
         <div className="flex justify-center text-teal-600 dark:text-teal-300">
-          <div className="w-50">
-            <img src={logo.src} alt="logo" className="w-full h-full" />
+          <div className="w-max h-max flex justify-center items-center">
+            <Image src="/images/logo.png" alt="logo" height={160} width={160} />
           </div>
         </div>
 

@@ -9,10 +9,10 @@ function Rooms() {
       className="px-4 sm:px-6 md:px-10 lg:px-20 py-20 bg-gray-50"
     >
       <div className="flex flex-col items-center justify-center gap-3">
-        <h1 className="text-5xl text-black font-extrabold">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl text-black text-center font-extrabold">
           Comfortable Stays
         </h1>
-        <p className="text-lg text-center text-gray-500">
+        <p className="text-base sm:text-lg text-gray-500">
           Choose from our thoughtfully designed rooms, each offering stunning
           views and modern amenities
         </p>
