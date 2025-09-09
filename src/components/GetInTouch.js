@@ -35,7 +35,7 @@ function GetInTouch() {
             </div>
             <div>
               <h3 className="text-lg font-semibold text-black">Email</h3>
-              <p className="text-gray-700">forestin2019@gamil.com</p>
+              <p className="text-gray-700">forestin2019@gmail.com</p>
             </div>
           </div>
 
