@@ -1,33 +1,35 @@
 import React from "react";
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
-} from "../ui/carousel";
 import testimonials from "@/lib/data/testimonials";
 import TestimonialCard from "./TestimonialCard";
 
-function TestimonialsCarousel() {
+// Split into two rows that scroll in opposite directions
+const half = Math.ceil(testimonials.length / 2);
+const rowA = testimonials.slice(0, half);
+const rowB = testimonials.slice(half);
+
+function Row({ items, direction }) {
   return (
-    <div className="relative w-full">
-      <Carousel className="w-full bg-gray-50">
-        <CarouselContent className="px-10 py-5">
-          {testimonials.map((testimonial, index) => (
-            <CarouselItem
-              key={index}
-              className="sm:basis-1/1 md:basis-1/2 lg:basis-1/3 px-2"
-            >
-              <TestimonialCard {...testimonial} />
-            </CarouselItem>
-          ))}
-        </CarouselContent>
-        <CarouselPrevious className="-left-4 sm:-left-6" />
-        <CarouselNext className="-right-4 sm:-right-6" />
-      </Carousel>
+    <div className="marquee-track relative overflow-hidden">
+      <div className={`marquee ${direction === "right" ? "marquee-right" : "marquee-left"}`}>
+        {[...items, ...items].map((t, i) => (
+          <TestimonialCard key={i} {...t} />
+        ))}
+      </div>
     </div>
   );
 }
 
-export default TestimonialsCarousel;
+function TestimonialsMarquee() {
+  return (
+    <div className="relative flex flex-col gap-5">
+      <Row items={rowA} direction="left" />
+      <Row items={rowB} direction="right" />
+
+      {/* edge fades */}
+      <div className="pointer-events-none absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-pine-deep to-transparent sm:w-28" />
+      <div className="pointer-events-none absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-pine-deep to-transparent sm:w-28" />
+    </div>
+  );
+}
+
+export default TestimonialsMarquee;

@@ -1,28 +1,26 @@
 import Image from "next/image";
 import React from "react";
 
-function SceneCard({ img }) {
+function SceneCard({ img, caption, className = "", priority = false }) {
   return (
-    <a className="group relative block bg-black">
+    <figure
+      className={`group relative block h-full w-full overflow-hidden bg-ink ${className}`}
+    >
       <Image
-        alt="Spacious double bed room with mountain view at Gopi Homestay"
+        alt={caption || "A scene from Gopi Homestay, Uttarakhand"}
         src={img}
         fill
-        className="absolute inset-0 h-full w-full object-cover opacity-75 transition-opacity group-hover:opacity-50"
-        sizes="100vw"
+        priority={priority}
+        className="object-cover transition-transform duration-[900ms] ease-out group-hover:scale-105"
+        sizes="(max-width: 768px) 50vw, 25vw"
       />
-      <div className="relative p-4 sm:p-6 lg:p-8">
-        <div className="mt-32 sm:mt-48 lg:mt-64">
-          <div className="translate-y-8 transform opacity-0 transition-all group-hover:translate-y-0 group-hover:opacity-100">
-            <p className="text-sm text-white">
-              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Omnis
-              perferendis hic asperiores quibusdam quidem voluptates doloremque
-              reiciendis nostrum harum. Repudiandae?
-            </p>
-          </div>
-        </div>
-      </div>
-    </a>
+      <div className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/10 to-transparent" />
+      <figcaption className="absolute inset-x-0 bottom-0 p-3.5">
+        <p className="translate-y-1 text-sm font-medium leading-snug text-white opacity-0 transition-all duration-300 group-hover:translate-y-0 group-hover:opacity-100">
+          {caption}
+        </p>
+      </figcaption>
+    </figure>
   );
 }
 

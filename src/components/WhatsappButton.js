@@ -1,15 +1,18 @@
-import { MessageCircleMore } from "lucide-react";
+import { MessageCircle } from "lucide-react";
 
 export default function WhatsappButton() {
   return (
     <a
-      href="https://wa.me/+919650765002"
+      href="https://wa.me/919650765002?text=Hi%20Gopi%20Homestay!%20I'd%20like%20to%20enquire%20about%20a%20stay."
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-6 right-6 z-50 bg-green-600 hover:bg-green-700 hover:scale-105 text-white p-4 rounded-full shadow-xl transition-all"
+      aria-label="Chat with Gopi Homestay on WhatsApp"
+      className="group fixed bottom-5 right-5 z-50 flex items-center gap-0 overflow-hidden rounded-full bg-[#25D366] p-4 text-white shadow-xl shadow-black/20 transition-all hover:gap-2 hover:pr-5"
     >
-      <MessageCircleMore className="w-6 h-6" />
-      <span className="sr-only">Chat on WhatsApp</span>
+      <MessageCircle className="h-6 w-6 shrink-0" />
+      <span className="max-w-0 whitespace-nowrap text-sm font-semibold opacity-0 transition-all duration-300 group-hover:max-w-[9rem] group-hover:opacity-100">
+        Chat with us
+      </span>
     </a>
   );
 }

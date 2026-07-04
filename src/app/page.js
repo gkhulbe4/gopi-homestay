@@ -1,51 +1,70 @@
 import GetInTouch from "@/components/GetInTouch";
 import Hero from "@/components/Hero/Hero";
+import About from "@/components/About";
 import Rooms from "@/components/Rooms/Rooms";
+import Experiences from "@/components/Experiences";
 import Scenery from "@/components/Scenery/Scenery";
 import Testimonials from "@/components/Testimonials/Testimonials";
-import Image from "next/image";
-import Head from "next/head";
+import Faq from "@/components/Faq";
+
+const SITE_URL = "https://gopihomestay.netlify.app";
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LodgingBusiness",
+  "@id": `${SITE_URL}/#lodging`,
+  name: "Gopi Homestay",
+  description:
+    "A family-run homestay in the Kumaon hills near Jim Corbett, Almora. Misty mornings, pine forests, home-cooked Kumaoni meals and warm hospitality.",
+  image: `${SITE_URL}/images/main.jpeg`,
+  url: SITE_URL,
+  telephone: "+91-9650765002",
+  email: "forestin2019@gmail.com",
+  priceRange: "₹1000–₹2500",
+  currenciesAccepted: "INR",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress:
+      "Village Panwadeokhan, Near Jim Corbett Forest, Tehsil Salt",
+    addressLocality: "Almora",
+    addressRegion: "Uttarakhand",
+    postalCode: "263646",
+    addressCountry: "IN",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 29.56889,
+    longitude: 79.22608,
+  },
+  amenityFeature: [
+    { "@type": "LocationFeatureSpecification", name: "Free Wi-Fi", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Hot Water", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Home-cooked Meals", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Bonfire", value: true },
+    { "@type": "LocationFeatureSpecification", name: "Mountain View", value: true },
+  ],
+  aggregateRating: {
+    "@type": "AggregateRating",
+    ratingValue: "4.3",
+    reviewCount: "10",
+    bestRating: "5",
+  },
+};
 
 export default function Home() {
   return (
     <>
-      <Head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              "@context": "https://schema.org",
-              "@type": "LodgingBusiness",
-              name: "Gopi Homestay",
-              image:
-                "https://scontent.fdel77-1.fna.fbcdn.net/v/t39.30808-1/301788629_452151666932537_2664775613871857998_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=Nn4dCXI6TnAQ7kNvwE94VJj&_nc_oc=Adka3U7dIEczV-Tidyymmw1KTyQcS1RurVh3RZ6RDFyVT6rIPAfGuBuyCEyK4sqdK_0&_nc_zt=24&_nc_ht=scontent.fdel77-1.fna&_nc_gid=1xj0grQQkxHwvmzFFXlEZw&oh=00_AfSyW93Aq1N854VowHz_MeyMx51w3eL8JCzdL75vBn_Lfw&oe=6891511F",
-              description:
-                "Affordable and scenic homestay in Uttarakhand near Jim Corbett. Ideal for nature lovers and weekend travelers.",
-              address: {
-                "@type": "PostalAddress",
-                addressLocality: "Uttarakhand",
-                addressRegion: "IN",
-                postalCode: "263646",
-                streetAddress:
-                  "Village Panwadeokhan,Near Jim Corbett Forest  Tehsil Salt Distt. Almora ,Uttarakhand",
-              },
-              url: "https://gopihomestay.netlify.com",
-              telephone: "+91-9650765002",
-              priceRange: "₹1500 - ₹3500",
-            }),
-          }}
-        />
-        <link
-          rel="preload"
-          as="video"
-          href="/videos/HeroVideo.mp4"
-          type="video/mp4"
-        />
-      </Head>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Hero />
+      <About />
       <Rooms />
+      <Experiences />
       <Scenery />
       <Testimonials />
+      <Faq />
       <GetInTouch />
     </>
   );

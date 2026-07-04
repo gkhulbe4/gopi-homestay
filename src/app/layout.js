@@ -1,53 +1,92 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsappButton from "@/components/WhatsappButton";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+// Elegant editorial serif for all display text
+const cormorant = Cormorant_Garamond({
+  variable: "--font-display",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const inter = Inter({
+  variable: "--font-body",
   subsets: ["latin"],
+  display: "swap",
+  weight: ["400", "500", "600", "700"],
 });
+
+const SITE_URL = "https://gopihomestay.netlify.app";
 
 export const metadata = {
-  title: "Gopi Homestay | Best Homestay in Jim Corbett, Uttarakhand",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: "Gopi Homestay | Homestay Near Jim Corbett, Uttarakhand",
+    template: "%s | Gopi Homestay",
+  },
   description:
-    "Experience serene nature at Gopi Homestay near Jim Corbett, Uttarakhand. Comfortable rooms, beautiful views, and unmatched hospitality await you.",
-  keywords:
-    "Gopi Homestay, homestay in Jim Corbett, homestay in Uttarakhand, hotels near Jim Corbett, affordable homestay, Jim Corbett stay, Uttarakhand nature stay",
-  authors: [{ name: "Gopi Homestay", url: "https://gopihomestay.netlify.com" }],
+    "A family-run homestay in the Kumaon hills near Jim Corbett, Almora. Misty mornings, pine forests, home-cooked Kumaoni meals and warm hospitality from ₹1,000/night.",
+  keywords: [
+    "Gopi Homestay",
+    "homestay near Jim Corbett",
+    "homestay in Uttarakhand",
+    "Almora homestay",
+    "Kumaon homestay",
+    "budget stay Jim Corbett",
+    "nature retreat Uttarakhand",
+    "mountain homestay India",
+  ],
+  authors: [{ name: "Gopi Homestay", url: SITE_URL }],
+  creator: "Gopi Homestay",
+  alternates: { canonical: "/" },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: { index: true, follow: true, "max-image-preview": "large" },
+  },
   openGraph: {
-    title: "Gopi Homestay | Serene Stay in Jim Corbett, Uttarakhand",
+    title: "Gopi Homestay | Serene Stay Near Jim Corbett, Uttarakhand",
     description:
-      "Plan your stay at Gopi Homestay for an unforgettable nature retreat near Jim Corbett National Park.",
-    url: "https://gopihomestay.netlify.com",
+      "Wake up to misty mornings and pine-scented air. A warm, family-run homestay in the Kumaon hills near Jim Corbett National Park.",
+    url: SITE_URL,
     siteName: "Gopi Homestay",
     images: [
       {
-        url: "https://scontent.fdel77-1.fna.fbcdn.net/v/t39.30808-1/301788629_452151666932537_2664775613871857998_n.jpg?stp=dst-jpg_s480x480_tt6&_nc_cat=103&ccb=1-7&_nc_sid=2d3e12&_nc_ohc=Nn4dCXI6TnAQ7kNvwE94VJj&_nc_oc=Adka3U7dIEczV-Tidyymmw1KTyQcS1RurVh3RZ6RDFyVT6rIPAfGuBuyCEyK4sqdK_0&_nc_zt=24&_nc_ht=scontent.fdel77-1.fna&_nc_gid=1xj0grQQkxHwvmzFFXlEZw&oh=00_AfSyW93Aq1N854VowHz_MeyMx51w3eL8JCzdL75vBn_Lfw&oe=6891511F", // Add actual OG image
+        url: "/images/main.jpeg",
         width: 1200,
         height: 630,
-        alt: "Gopi Homestay surrounded by greenery",
+        alt: "Gopi Homestay nestled in the pine forests of Uttarakhand",
       },
     ],
-    locale: "en_US",
+    locale: "en_IN",
     type: "website",
   },
+  twitter: {
+    card: "summary_large_image",
+    title: "Gopi Homestay | Serene Stay Near Jim Corbett, Uttarakhand",
+    description:
+      "A family-run mountain homestay in the Kumaon hills near Jim Corbett. Misty mornings, pine forests and home-cooked meals.",
+    images: ["/images/main.jpeg"],
+  },
+  category: "travel",
+};
+
+export const viewport = {
+  themeColor: "#35463C",
+  colorScheme: "light",
 };
 
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${cormorant.variable} ${inter.variable} antialiased`}
       >
         <Header />
-        {children}
+        <main>{children}</main>
         <WhatsappButton />
         <Footer />
       </body>

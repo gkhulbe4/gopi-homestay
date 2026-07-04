@@ -1,90 +1,111 @@
 import React from "react";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import SceneryTab from "./SceneryTab";
+import SectionHeading from "../SectionHeading";
+import Reveal from "../Reveal";
+
+// Image pool (placeholders for now — swap for real photos later)
+const P = {
+  m1: "/images/gallery/mornings/mountain1.jpeg",
+  m2: "/images/gallery/mornings/mountain2.jpeg",
+  main: "/images/main.jpeg",
+  mmt: "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
+  nomad:
+    "https://www.nomadicweekends.com/wp-content/uploads/2024/09/Jhandi-Homestay-Hill-Top-Luxurious-19-1228x800.jpeg",
+  cnt: "https://assets.cntraveller.in/photos/63a53dc3d7caa4e531854e77/master/pass/ROOM%20WITH%20A%20VIEW%20LEAD.jpg",
+};
+
+// Same 7-tile bento pattern in every tab; only the images change.
+const GALLERY = {
+  Mornings: [
+    { img: P.m2, caption: "First light over the Kumaon ridges" },
+    { img: P.m1, caption: "Chai on the porch" },
+    { img: P.mmt, caption: "Mist on the pines" },
+    { img: P.cnt, caption: "A room open to the hills" },
+    { img: P.main, caption: "The house at dawn" },
+    { img: P.nomad, caption: "Valley views for miles" },
+    { img: P.m1, caption: "Slow mountain mornings" },
+  ],
+  Bonfires: [
+    { img: P.nomad, caption: "Evenings around the fire" },
+    { img: P.mmt, caption: "Stories after dark" },
+    { img: P.cnt, caption: "Warmth against the cold" },
+    { img: P.main, caption: "Gathered under the stars" },
+    { img: P.m2, caption: "Embers and quiet" },
+    { img: P.m1, caption: "A sky full of stars" },
+    { img: P.mmt, caption: "The last glow of the night" },
+  ],
+  Trails: [
+    { img: P.nomad, caption: "Paths from the doorstep" },
+    { img: P.m2, caption: "Through the chir pines" },
+    { img: P.cnt, caption: "Ridgelines and long views" },
+    { img: P.mmt, caption: "A hidden local waterfall" },
+    { img: P.main, caption: "Where the trail begins" },
+    { img: P.m1, caption: "Forest quiet" },
+    { img: P.nomad, caption: "Walks that wander" },
+  ],
+  "Local Life": [
+    { img: P.cnt, caption: "Home-cooked daal & chawal" },
+    { img: P.mmt, caption: "Terraced fields" },
+    { img: P.m1, caption: "The rhythm of the village" },
+    { img: P.nomad, caption: "Orchards on the slopes" },
+    { img: P.main, caption: "A home in the hills" },
+    { img: P.m2, caption: "Generations of farming" },
+    { img: P.cnt, caption: "Everyday mountain life" },
+  ],
+};
+
+const TABS = ["Mornings", "Bonfires", "Trails", "Local Life"];
 
 function Scenery() {
   return (
-    <section
-      id="gallery"
-      className="flex flex-col gap-10 items-center justify-center py-20 px-4 sm:px-6 md:px-10 lg:px-20 bg-white w-full"
-    >
-      <div className="flex flex-col items-center justify-center gap-3 text-center">
-        <h1 className="text-3xl sm:text-4xl md:text-5xl text-black font-extrabold">
-          Wake Up to Nature – Explore the Scenic Beauty
-        </h1>
-        <p className="text-base sm:text-lg text-gray-500">
-          Located amidst dense pine forests, misty mornings, and riverside
-          trails, Gopi Homestay brings you face-to-face with the unspoiled
-          beauty of Uttarakhand. Here's a glimpse of what your mornings might
-          look like.
-        </p>
-      </div>
+    <section id="gallery" className="border-t border-line bg-paper py-16 md:py-24">
+      <div className="shell flex flex-col items-center gap-10">
+        <SectionHeading
+          eyebrow="A glimpse of the days"
+          title="Wake up to nature, unhurried"
+        >
+          Dense pine forests, misty mornings and riverside trails. Here is what
+          your days at Gopi Homestay tend to look like.
+        </SectionHeading>
 
-      <Tabs defaultValue="Mornings" className="w-full">
-        <TabsList className="w-full flex flex-wrap flex-col sm:flex-row justify-center gap-2 shadow-xl rounded-md md:rounded-full bg-gray-100 h-max px-4 py-2">
-          {["Mornings", "Bonfires", "Trials", "Local Life"].map((tab) => (
-            <TabsTrigger
-              key={tab}
-              value={tab}
-              className="p-2 text-sm md:text-base w-full sm:w-auto font-semibold rounded-full transition-colors duration-200 hover:bg-gray-200 data-[state=active]:bg-green-600 data-[state=active]:text-white cursor-pointer"
-            >
-              {tab}
-            </TabsTrigger>
-          ))}
-        </TabsList>
+        <Reveal className="w-full">
+          <Tabs defaultValue="Mornings" className="w-full items-center gap-9">
+            <TabsList className="flex h-auto w-full max-w-2xl flex-wrap justify-center gap-6 rounded-none border-b border-line bg-transparent p-0 sm:gap-10">
+              {TABS.map((tab) => (
+                <TabsTrigger
+                  key={tab}
+                  value={tab}
+                  className="flex-none cursor-pointer rounded-none border-0 bg-transparent px-1 pb-3.5 pt-0 text-[0.68rem] font-semibold uppercase tracking-[0.2em] text-ink-soft transition-colors hover:text-ink data-[state=active]:bg-transparent data-[state=active]:text-ink data-[state=active]:shadow-none data-[state=active]:[box-shadow:inset_0_-1px_0_var(--ink),0_1px_0_var(--ink)]"
+                >
+                  {tab}
+                </TabsTrigger>
+              ))}
+            </TabsList>
 
-        <TabsContent value="Mornings" className="mt-4">
-          <SceneryTab
-            imgs={[
-              "/images/gallery/mornings/mountain2.jpeg",
-              "/images/gallery/mornings/mountain1.jpeg",
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-            ]}
-          />
-        </TabsContent>
+            {TABS.map((tab) => (
+              <TabsContent
+                key={tab}
+                value={tab}
+                className="mt-2 w-full data-[state=active]:animate-in data-[state=active]:fade-in-50"
+              >
+                <SceneryTab items={GALLERY[tab]} />
+              </TabsContent>
+            ))}
+          </Tabs>
+        </Reveal>
 
-        <TabsContent value="Bonfires" className="mt-4">
-          <SceneryTab
-            imgs={[
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-            ]}
-          />
-        </TabsContent>
-
-        <TabsContent value="Trials" className="mt-4">
-          <SceneryTab
-            imgs={[
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-              "https://www.nomadicweekends.com/wp-content/uploads/2024/09/Jhandi-Homestay-Hill-Top-Luxurious-19-1228x800.jpeg",
-              "https://assets.cntraveller.in/photos/63a53dc3d7caa4e531854e77/master/pass/ROOM%20WITH%20A%20VIEW%20LEAD.jpg",
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-            ]}
-          />
-        </TabsContent>
-
-        <TabsContent value="Local Life" className="mt-4">
-          <SceneryTab
-            imgs={[
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-              "https://r2imghtlak.mmtcdn.com/r2-mmt-htl-image/htl-imgs/202302191314306552-9580801d-f5b0-4153-b27e-b38f78817778.jpg",
-              "https://www.nomadicweekends.com/wp-content/uploads/2024/09/Jhandi-Homestay-Hill-Top-Luxurious-19-1228x800.jpeg",
-              "https://assets.cntraveller.in/photos/63a53dc3d7caa4e531854e77/master/pass/ROOM%20WITH%20A%20VIEW%20LEAD.jpg",
-            ]}
-          />
-        </TabsContent>
-      </Tabs>
-
-      <div className="flex flex-col gap-3 text-center">
-        <p className="text-base sm:text-lg text-gray-500">
-          Want to experience this for yourself?
-        </p>
-        <button className="rounded-full mx-auto px-8 sm:px-10 py-2.5 sm:py-3 bg-green-700 text-white font-semibold hover:bg-green-800">
-          Get In Touch
-        </button>
+        <Reveal className="flex flex-col items-center gap-5 text-center">
+          <p className="font-display text-xl text-ink md:text-2xl">
+            Want to wake up here yourself?
+          </p>
+          <a
+            href="#contact"
+            className="btn-caps text-ink hover:bg-ink hover:text-paper"
+          >
+            Plan your stay
+          </a>
+        </Reveal>
       </div>
     </section>
   );
