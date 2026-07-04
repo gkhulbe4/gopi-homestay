@@ -20,7 +20,7 @@ const inter = Inter({
   weight: ["400", "500", "600", "700"],
 });
 
-const SITE_URL = "https://gopihomestay.netlify.app";
+const SITE_URL = "https://gopihomestay.vercel.app";
 
 export const metadata = {
   metadataBase: new URL(SITE_URL),

@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://gopihomestay.netlify.app
+Host: https://gopihomestay.vercel.app
 
 # Sitemaps
-Sitemap: https://gopihomestay.netlify.app/sitemap.xml
+Sitemap: https://gopihomestay.vercel.app/sitemap.xml

@@ -1,4 +1,4 @@
 module.exports = {
-  siteUrl: "https://gopihomestay.netlify.app",
+  siteUrl: "https://gopihomestay.vercel.app",
   generateRobotsTxt: true,
 };

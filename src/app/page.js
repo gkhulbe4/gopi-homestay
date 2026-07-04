@@ -7,7 +7,7 @@ import Scenery from "@/components/Scenery/Scenery";
 import Testimonials from "@/components/Testimonials/Testimonials";
 import Faq from "@/components/Faq";
 
-const SITE_URL = "https://gopihomestay.netlify.app";
+const SITE_URL = "https://gopihomestay.vercel.app";
 
 const jsonLd = {
   "@context": "https://schema.org",
